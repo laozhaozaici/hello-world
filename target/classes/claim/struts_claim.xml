@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+	"http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+
+
+	<package name="claim" extends="struts-default" namespace="/jsp/claim">
+		<action name="searchClaim" class="claimAction" method="searchClaimVoucher">
+			<result name="success">claim_voucher_list.jsp</result>
+			<result name="error" type="redirect">/login.jsp</result>
+		</action>
+		
+		<action name="toAddClaimVoucher" class="claimAction" method="toAddClaimVoucher">
+			<result name="success">claim_voucher_edit.jsp</result>
+		</action>
+		
+		<!--  添加报销单 -->
+		<action name="addClaim" class="claimAction" method="addClaim">
+			<result name="error">claim_voucher_edit.jsp</result>
+			<result name="success" type="redirectAction">searchClaim</result>
+		</action>
+		
+		<!--  跳转到修改页面 -->
+		<action name="toUpdate" class="claimAction" method="toUpdate">
+			<result name="success">claim_voucher_update.jsp</result>
+			<result name="error" type="redirectAction">searchClaim</result>
+		</action>
+		
+		<!-- 修改页面动作 -->
+		<action name="updateClaim" class="claimAction" 
+			method="updateClaimVoucher">
+			<result name="success" type="redirectAction">searchClaim</result>
+ 		</action>
+		<!-- 跳转到审核页面 -->
+		<action name="toCheck" class="claimAction"
+		method="toCheck">
+		<result name="success">claim_voucher_check.jsp</result>
+		</action>
+		
+		
+		<!--  审核 -->
+		<action name="checkResult" class="claimAction" method="checkResult">
+			<result name="success" type="redirectAction">searchClaim</result>
+		</action>
+		
+	</package>
+
+</struts>

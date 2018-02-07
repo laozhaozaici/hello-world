@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+	"http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<!-- 指定被struts2处理的请求后缀类型。多个用逗号隔开 -->
+	<constant name="struts.action.extension" value="action,do" />
+	<!-- 当struts.xml改动后，是否重新加载。默认值为false(生产环境下使用),开发阶段最好打开 -->
+	<constant name="struts.configuration.xml.reload" value="true" />
+	<!-- 默认的视图主题 -->
+	<constant name="struts.ui.theme" value="simple" />
+
+
+
+	<package name="default" extends="struts-default" namespace="/">
+		<action name="random" class="userAction" method="random">
+			<result type="stream">
+				<param name="contentType">image/jpeg</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+
+		<!-- 登录 -->
+		<action name="login" class="userAction" method="login">
+			<result name="success" type="redirect">index.jsp</result>
+			<result name="error">login.jsp</result>
+		</action>
+	</package>
+
+
+	<include file="claim/struts_claim.xml"></include>
+	<include file="statistics/struts_statistics.xml"></include>
+</struts>
+	
+	

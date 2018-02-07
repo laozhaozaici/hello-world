@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+	"http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+
+
+	<package name="statistics" extends="struts-default,json-default" namespace="/jsp/statistics">
+		<!--  部门的月度统计 -->
+		<action name="deptStatisticsByMonth" class="statisticsAction" method="deptStatisticsByMonth">
+			<result name="success">deptMonthStatistics_list.jsp</result>
+			<result name="error" type="redirect">/login.jsp</result>
+		</action>
+		
+		
+		<action name="month" class="statisticsAction" method="month">
+			<result type="json">
+				<param name="root">list</param>
+			</result>
+		</action>
+		
+		
+		
+		
+		
+	</package>
+
+</struts>
