@@ -20,7 +20,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "biz_check_result", catalog = "oa")
 public class BizCheckResult implements java.io.Serializable {
-	//id111111
+	
 	private Integer id;
 	private BizClaimVoucher bizClaimVoucher;
 	private SysEmployee sysEmployee;  
